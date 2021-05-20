@@ -127,7 +127,7 @@ def pipeline():
             trials = ['01', '02', '03', '04']
             for t in trials:
                 if diameter == '23.9x83.5':
-                    input_name = f'{channel} {rate}  {t}'
+                    input_name = f'{channel} {rate} {t}'
                 else:
                     input_name = f'{diameter} micrometer  channel {channel}  {rate}ul per min  40x  {t}'
 
