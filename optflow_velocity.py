@@ -71,9 +71,9 @@ def compute_mags(input_video,
             np.save(output_path + f'_mag{plt_count}.npy', mag)
 
             magnitudes.append(mag)
-            plt.hist(mag, bins=10)
-            plt_name = output_path + f'_{plt_count}.png'
-            plt.savefig(plt_name)
+            # plt.hist(mag, bins=10)
+            # plt_name = output_path + f'_{plt_count}.png'
+            # plt.savefig(plt_name)
 
         prev = next
         frame_count += 1
