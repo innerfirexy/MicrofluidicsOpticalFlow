@@ -97,7 +97,7 @@ def analyze_mags(input_path):
     if os.path.exists(mag_filename):
         mags = pickle.load(open(mag_filename, 'rb'))
         avg_mag = np.mean(list(map(
-            lambda x: np.mean(x[np.logical_and(x != np.inf, x > 8.0)]), mags)))
+            lambda x: np.mean(x[np.logical_and(x != np.inf, x > 3.0)]), mags)))
 
     print(f'{input_path}, {avg_mag:.3f}')
 
@@ -116,10 +116,12 @@ def pipeline():
         ('./Microfluidics Dataset/23.9x83.5/with dextran', '23.9x83.5',
         'dextran', ['v1', 'v2', 'v3']),
 
+        ('./Microfluidics Dataset/23.9x83.5/without dextran', '23.9x83.5',
+        'without dextran', ['v1', 'v2', 'v3']),
     ]
     result_folder = './sampled_histograms'
     analyze_flag = True
-    compute_flag = True
+    compute_flag = False 
 
     for group in groups:
         video_folder, diameter, channel, flow_rates = group
