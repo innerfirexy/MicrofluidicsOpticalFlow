@@ -48,25 +48,24 @@ def compute_mags(input_video,
     output_path = os.path.join(output_dir, os.path.splitext(file_name)[0])
 
     cap = cv2.VideoCapture(input_video)
-    ret, frame1 = cap.read()
-    prvs = cv2.cvtColor(frame1, cv2.COLOR_BGR2GRAY)
-    hsv = np.zeros_like(frame1)
+    ret, frame = cap.read()
+    old_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    hsv = np.zeros_like(frame)
     hsv[...,1] = 255
 
     frame_count = 0
     plt_count = 0
     magnitudes = []
     while cap.isOpened():
-        ret, frame2 = cap.read()
-        if ret:
-            next = cv2.cvtColor(frame2, cv2.COLOR_BGR2GRAY)
-        else:
+        ret, frame = cap.read()
+        if not ret:
             break
+        new_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
         # compute and plot
         if frame_count % plot_every == 0 and frame_count > 0:
             plt_count += 1
-            flow = cv2.calcOpticalFlowFarneback(prvs, next, None, 0.5, 3, 15, 3, 5, 1.2, 0)
+            flow = cv2.calcOpticalFlowFarneback(old_frame, new_frame, None, 0.5, 3, 15, 3, 5, 1.2, 0)
             mag, ang = cv2.cartToPolar(flow[...,0], flow[...,1])
             np.save(output_path + f'_mag{plt_count}.npy', mag)
 
@@ -75,7 +74,7 @@ def compute_mags(input_video,
             # plt_name = output_path + f'_{plt_count}.png'
             # plt.savefig(plt_name)
 
-        prev = next
+        old_frame = new_frame
         frame_count += 1
         # cv2.imshow('frame2',rgb)
         sys.stdout.write(f'\r{frame_count}/{len(vr)} frames processed')
@@ -87,19 +86,20 @@ def compute_mags(input_video,
         pickle.dump(magnitudes, f)
 
 
-def analyze_mags(input_path):
-    # input_path = '200x200 micrometer  channel B  0.72 ul per min  40x  01'
-    # mags = []
-    # for i in range(1, 16, 1):
-    #     mag = np.load(input_path + f'_mag{i}.npy')
-    #     mags.append(mag)
+def analyze_mags(input_path, plot=False):
     mag_filename = input_path + '_magnitudes.pkl'
     if os.path.exists(mag_filename):
         mags = pickle.load(open(mag_filename, 'rb'))
         avg_mag = np.mean(list(map(
             lambda x: np.mean(x[np.logical_and(x != np.inf, x > 3.0)]), mags)))
+        print(f'{input_path}, {avg_mag:.3f}')
+        if plot:
+            plt.hist(mags[0], bins=10)
+            plt_name = input_path + '_avgmag.png'
+            plt.savefig(plt_name)
+    else:
+        print(f'mag_filename does not exist.')
 
-    print(f'{input_path}, {avg_mag:.3f}')
 
 
 def pipeline():
@@ -121,7 +121,7 @@ def pipeline():
     ]
     result_folder = './sampled_histograms'
     analyze_flag = True
-    compute_flag = False 
+    compute_flag = True 
 
     for group in groups:
         video_folder, diameter, channel, flow_rates = group
