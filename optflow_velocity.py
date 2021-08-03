@@ -7,6 +7,12 @@ import matplotlib.pyplot as plt
 from tqdm import tqdm
 import pickle
 import PIL
+import argparse
+
+parser = argparse.ArgumentParser(description='Microfluidics ex-vivo data analysis')
+parser.add_argument('--analyze', type=int, default=1)
+parser.add_argument('--compute', type=int, default=1)
+args = parser.parse_args()
 
 
 def get_samples(input_video, output_dir: str = './sampled_frames', num_samples: int = 15):
@@ -104,14 +110,14 @@ def analyze_mags(input_path, plot=False):
 
 def pipeline():
     groups = [
-        # ('./Microfluidics Dataset/50 x 50/With Dextran', '50x50',
-        # 'D', ['0.06', '0.045', '0.075']),
+        ('./Microfluidics Dataset/50 x 50/With Dextran', '50x50',
+        'D', ['0.06', '0.045', '0.075']),
 
-        # ('./Microfluidics Dataset/100 x 100/With Dextran', '100x100',
-        # 'C', ['0.18 ', '0.24', '0.30']),
+        ('./Microfluidics Dataset/100 x 100/With Dextran', '100x100',
+        'C', ['0.18 ', '0.24', '0.30']),
 
-        # ('./Microfluidics Dataset/200 x 200/With Dextran', '200x200',
-        # 'B', ['0.72 ', '0.96 ', '1.2 ']),
+        ('./Microfluidics Dataset/200 x 200/With Dextran', '200x200',
+        'B', ['0.72 ', '0.96 ', '1.2 ']),
 
         ('./Microfluidics Dataset/23.9x83.5/with dextran', '23.9x83.5',
         'dextran', ['v1', 'v2', 'v3']),
@@ -120,8 +126,6 @@ def pipeline():
         'without dextran', ['v1', 'v2', 'v3']),
     ]
     result_folder = './sampled_histograms'
-    analyze_flag = True
-    compute_flag = True 
 
     for group in groups:
         video_folder, diameter, channel, flow_rates = group
@@ -133,20 +137,16 @@ def pipeline():
                 else:
                     input_name = f'{diameter} micrometer  channel {channel}  {rate}ul per min  40x  {t}'
 
-                if compute_flag:
+                if args.compute == 1:
                     input_path = os.path.join(video_folder, input_name + '.mp4')
                     print('computing ', input_path)
                     # print(os.path.exists(input_path))
                     compute_mags(input_path, output_dir=result_folder, num_plots=15)
                     print()
-                if analyze_flag:
+                if args.analyze == 1:
                     input_path = os.path.join(result_folder, input_name)
                     analyze_mags(input_path)
 
 
 if __name__ == "__main__":
-    # assert len(sys.argv) > 1
-    # input_video = sys.argv[1]
-    # compute_mags(input_video)
-    # Time elapse for 1 video file: cpu 6:59.37 total
     pipeline()
