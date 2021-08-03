@@ -8,10 +8,12 @@ from tqdm import tqdm
 import pickle
 import PIL
 import argparse
+import pandas as pd
 
 parser = argparse.ArgumentParser(description='Microfluidics ex-vivo data analysis')
 parser.add_argument('--analyze', type=int, default=1)
 parser.add_argument('--compute', type=int, default=1)
+parser.add_argument('--save', type=str, default='')
 args = parser.parse_args()
 
 
@@ -94,18 +96,43 @@ def compute_mags(input_video,
 
 def analyze_mags(input_path, plot=False):
     mag_filename = input_path + '_magnitudes.pkl'
+    mean_mags = None
     if os.path.exists(mag_filename):
         mags = pickle.load(open(mag_filename, 'rb'))
-        avg_mag = np.mean(list(map(
+        mean_mags = np.mean(list(map(
             lambda x: np.mean(x[np.logical_and(x != np.inf, x > 3.0)]), mags)))
-        print(f'{input_path}, {avg_mag:.3f}')
+        print(f'{input_path}, {mean_mags:.3f}')
         if plot:
             plt.hist(mags[0], bins=10)
             plt_name = input_path + '_avgmag.png'
             plt.savefig(plt_name)
     else:
         print(f'{mag_filename} does not exist.')
+    
+    return mean_mags
 
+
+def analyze_vars(input_path, plot=False):
+    mag_filename = input_path + '_magnitudes.pkl'
+    mean_vars = None
+    if os.path.exists(mag_filename):
+        mags = pickle.load(open(mag_filename, 'rb'))
+        variances = []
+        for m in mags:
+            m_valid = m[np.logical_and(m != np.inf, m > 3.0)]
+            vari = np.std(m_valid)
+            variances.append(vari)
+        mean_vars = np.mean(np.array(variances))
+        print(f'{input_path}, {mean_vars:.3f}')
+    else:
+        print(f'{mag_filename} does not exist.')
+    
+    return mean_vars
+
+
+def unit_test():
+    input_path = './sampled_histograms/50x50 micrometer  channel D  0.06ul per min  40x  01'
+    analyze_vars(input_path)
 
 
 def pipeline():
@@ -127,6 +154,7 @@ def pipeline():
     ]
     result_folder = './sampled_histograms'
 
+    analysis_results = []
     for group in groups:
         video_folder, diameter, channel, flow_rates = group
         for rate in flow_rates:
@@ -145,8 +173,15 @@ def pipeline():
                     print()
                 if args.analyze == 1:
                     input_path = os.path.join(result_folder, input_name)
-                    analyze_mags(input_path)
+                    mean_mags = analyze_mags(input_path)
+                    mean_vars = analyze_vars(input_path)
+                    analysis_results.append((input_path, mean_mags, mean_vars))
+    
+    if args.save:
+        data = pd.DataFrame.from_records(analysis_results, columns=['name', 'mean', 'var'])
+        data.to_csv(args.save, index=False)
 
 
 if __name__ == "__main__":
     pipeline()
+    # unit_test()
