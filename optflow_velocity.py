@@ -104,7 +104,7 @@ def analyze_mags(input_path, plot=False):
             plt_name = input_path + '_avgmag.png'
             plt.savefig(plt_name)
     else:
-        print(f'mag_filename does not exist.')
+        print(f'{mag_filename} does not exist.')
 
 
 
