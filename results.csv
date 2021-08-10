@@ -1,0 +1,61 @@
+name,mean,var
+./sampled_histograms/50x50 micrometer  channel D  0.06ul per min  40x  01,8.966323852539062,3.379650115966797
+./sampled_histograms/50x50 micrometer  channel D  0.06ul per min  40x  02,9.012505531311035,3.1709697246551514
+./sampled_histograms/50x50 micrometer  channel D  0.06ul per min  40x  03,9.882830619812012,2.783612012863159
+./sampled_histograms/50x50 micrometer  channel D  0.06ul per min  40x  04,9.713778495788574,3.484421730041504
+./sampled_histograms/50x50 micrometer  channel D  0.045ul per min  40x  01,7.635572910308838,2.105315685272217
+./sampled_histograms/50x50 micrometer  channel D  0.045ul per min  40x  02,6.752554893493652,1.5972896814346313
+./sampled_histograms/50x50 micrometer  channel D  0.045ul per min  40x  03,7.313658237457275,2.114560842514038
+./sampled_histograms/50x50 micrometer  channel D  0.045ul per min  40x  04,6.305125713348389,1.6412074565887451
+./sampled_histograms/50x50 micrometer  channel D  0.075ul per min  40x  01,7.998226642608643,1.983419418334961
+./sampled_histograms/50x50 micrometer  channel D  0.075ul per min  40x  02,6.439082145690918,1.5711640119552612
+./sampled_histograms/50x50 micrometer  channel D  0.075ul per min  40x  03,7.448892116546631,2.0041487216949463
+./sampled_histograms/50x50 micrometer  channel D  0.075ul per min  40x  04,6.207572937011719,1.6066759824752808
+./sampled_histograms/100x100 micrometer  channel C  0.18 ul per min  40x  01,6.882575511932373,2.019862651824951
+./sampled_histograms/100x100 micrometer  channel C  0.18 ul per min  40x  02,8.227381706237793,2.512463092803955
+./sampled_histograms/100x100 micrometer  channel C  0.18 ul per min  40x  03,8.887696266174316,2.734644651412964
+./sampled_histograms/100x100 micrometer  channel C  0.18 ul per min  40x  04,10.06745433807373,3.727886199951172
+./sampled_histograms/100x100 micrometer  channel C  0.24ul per min  40x  01,12.020838737487793,4.699673652648926
+./sampled_histograms/100x100 micrometer  channel C  0.24ul per min  40x  02,14.171142578125,5.801243782043457
+./sampled_histograms/100x100 micrometer  channel C  0.24ul per min  40x  03,15.244691848754883,6.438264846801758
+./sampled_histograms/100x100 micrometer  channel C  0.24ul per min  40x  04,13.245203971862793,5.073265075683594
+./sampled_histograms/100x100 micrometer  channel C  0.30ul per min  40x  01,15.427066802978516,5.821690082550049
+./sampled_histograms/100x100 micrometer  channel C  0.30ul per min  40x  02,14.674908638000488,6.768504619598389
+./sampled_histograms/100x100 micrometer  channel C  0.30ul per min  40x  03,16.789981842041016,7.536463260650635
+./sampled_histograms/100x100 micrometer  channel C  0.30ul per min  40x  04,16.651403427124023,7.355997085571289
+./sampled_histograms/200x200 micrometer  channel B  0.72 ul per min  40x  01,10.152423858642578,4.371029376983643
+./sampled_histograms/200x200 micrometer  channel B  0.72 ul per min  40x  02,10.02842903137207,4.246227741241455
+./sampled_histograms/200x200 micrometer  channel B  0.72 ul per min  40x  03,10.375492095947266,4.361201763153076
+./sampled_histograms/200x200 micrometer  channel B  0.72 ul per min  40x  04,9.825072288513184,3.9655778408050537
+./sampled_histograms/200x200 micrometer  channel B  0.96 ul per min  40x  01,13.040631294250488,4.8028764724731445
+./sampled_histograms/200x200 micrometer  channel B  0.96 ul per min  40x  02,11.991032600402832,4.874827861785889
+./sampled_histograms/200x200 micrometer  channel B  0.96 ul per min  40x  03,10.674236297607422,4.229735851287842
+./sampled_histograms/200x200 micrometer  channel B  0.96 ul per min  40x  04,11.712372779846191,5.288368225097656
+./sampled_histograms/200x200 micrometer  channel B  1.2 ul per min  40x  01,16.110361099243164,7.417696952819824
+./sampled_histograms/200x200 micrometer  channel B  1.2 ul per min  40x  02,16.570873260498047,8.70734977722168
+./sampled_histograms/200x200 micrometer  channel B  1.2 ul per min  40x  03,16.786865234375,8.435273170471191
+./sampled_histograms/200x200 micrometer  channel B  1.2 ul per min  40x  04,16.583200454711914,8.18338680267334
+./sampled_histograms/dextran v1 01,,
+./sampled_histograms/dextran v1 02,,
+./sampled_histograms/dextran v1 03,,
+./sampled_histograms/dextran v1 04,,
+./sampled_histograms/dextran v2 01,5.7007737159729,1.736131191253662
+./sampled_histograms/dextran v2 02,5.519678592681885,1.558380365371704
+./sampled_histograms/dextran v2 03,5.439537048339844,1.5428894758224487
+./sampled_histograms/dextran v2 04,5.378912925720215,1.522080898284912
+./sampled_histograms/dextran v3 01,7.91963529586792,3.672581911087036
+./sampled_histograms/dextran v3 02,8.195282936096191,3.7962143421173096
+./sampled_histograms/dextran v3 03,8.318989753723145,4.098462104797363
+./sampled_histograms/dextran v3 04,8.622748374938965,3.960524082183838
+./sampled_histograms/without dextran v1 01,4.721819877624512,1.4329558610916138
+./sampled_histograms/without dextran v1 02,5.316407203674316,1.746187686920166
+./sampled_histograms/without dextran v1 03,4.777890205383301,1.5959429740905762
+./sampled_histograms/without dextran v1 04,5.489779949188232,1.8449445962905884
+./sampled_histograms/without dextran v2 01,5.799650192260742,2.0619757175445557
+./sampled_histograms/without dextran v2 02,,
+./sampled_histograms/without dextran v2 03,6.037428855895996,1.8779499530792236
+./sampled_histograms/without dextran v2 04,5.763274669647217,1.6291425228118896
+./sampled_histograms/without dextran v3 01,5.917728424072266,2.8590071201324463
+./sampled_histograms/without dextran v3 02,7.105459690093994,4.036886692047119
+./sampled_histograms/without dextran v3 03,6.906814098358154,3.733593463897705
+./sampled_histograms/without dextran v3 04,7.300154685974121,3.910301446914673
