@@ -1,0 +1,37 @@
+name,mean,var
+./sampled_histograms/50x50 micrometer  channel D  0.06ul per min  40x  01,8.57429027557373,4.3435587882995605
+./sampled_histograms/50x50 micrometer  channel D  0.06ul per min  40x  02,8.863815307617188,3.5523791313171387
+./sampled_histograms/50x50 micrometer  channel D  0.06ul per min  40x  03,8.078116416931152,3.7262790203094482
+./sampled_histograms/50x50 micrometer  channel D  0.06ul per min  40x  04,7.197524547576904,2.7856550216674805
+./sampled_histograms/50x50 micrometer  channel D  0.045ul per min  40x  01,9.9732084274292,4.954803466796875
+./sampled_histograms/50x50 micrometer  channel D  0.045ul per min  40x  02,9.452757835388184,3.8181421756744385
+./sampled_histograms/50x50 micrometer  channel D  0.045ul per min  40x  03,8.638151168823242,4.837929725646973
+./sampled_histograms/50x50 micrometer  channel D  0.045ul per min  40x  04,8.431000709533691,4.170976638793945
+./sampled_histograms/50x50 micrometer  channel D  0.075ul per min  40x  01,6.195448398590088,2.1700704097747803
+./sampled_histograms/50x50 micrometer  channel D  0.075ul per min  40x  02,5.967164993286133,2.1878576278686523
+./sampled_histograms/50x50 micrometer  channel D  0.075ul per min  40x  03,6.210184574127197,2.311591148376465
+./sampled_histograms/50x50 micrometer  channel D  0.075ul per min  40x  04,7.059600353240967,2.707977771759033
+./sampled_histograms/100x100 micrometer  channel C  0.18 ul per min  40x  01,10.223705291748047,5.1567511558532715
+./sampled_histograms/100x100 micrometer  channel C  0.18 ul per min  40x  02,10.522793769836426,5.755843162536621
+./sampled_histograms/100x100 micrometer  channel C  0.18 ul per min  40x  03,10.261933326721191,5.399980545043945
+./sampled_histograms/100x100 micrometer  channel C  0.18 ul per min  40x  04,7.793565273284912,4.212891578674316
+./sampled_histograms/100x100 micrometer  channel C  0.24ul per min  40x  01,7.415412425994873,3.452549934387207
+./sampled_histograms/100x100 micrometer  channel C  0.24ul per min  40x  02,7.680643081665039,3.5844919681549072
+./sampled_histograms/100x100 micrometer  channel C  0.24ul per min  40x  03,8.897496223449707,4.781773090362549
+./sampled_histograms/100x100 micrometer  channel C  0.24ul per min  40x  04,6.633285045623779,2.5450308322906494
+./sampled_histograms/100x100 micrometer  channel C  0.30ul per min  40x  01,8.053112030029297,4.0373454093933105
+./sampled_histograms/100x100 micrometer  channel C  0.30ul per min  40x  02,8.189875602722168,3.9158060550689697
+./sampled_histograms/100x100 micrometer  channel C  0.30ul per min  40x  03,9.351410865783691,4.834124565124512
+./sampled_histograms/100x100 micrometer  channel C  0.30ul per min  40x  04,9.580942153930664,5.071588039398193
+./sampled_histograms/200x200 micrometer  channel B  0.72 ul per min  40x  01,8.593091011047363,3.728198766708374
+./sampled_histograms/200x200 micrometer  channel B  0.72 ul per min  40x  02,11.017577171325684,5.125613212585449
+./sampled_histograms/200x200 micrometer  channel B  0.72 ul per min  40x  03,8.986832618713379,4.23543119430542
+./sampled_histograms/200x200 micrometer  channel B  0.72 ul per min  40x  04,8.583114624023438,3.675737142562866
+./sampled_histograms/200x200 micrometer  channel B  0.96 ul per min  40x  01,7.095893859863281,5.095564365386963
+./sampled_histograms/200x200 micrometer  channel B  0.96 ul per min  40x  02,8.456379890441895,5.298286437988281
+./sampled_histograms/200x200 micrometer  channel B  0.96 ul per min  40x  03,8.24768352508545,5.835697174072266
+./sampled_histograms/200x200 micrometer  channel B  0.96 ul per min  40x  04,7.309333324432373,4.83848762512207
+./sampled_histograms/200x200 micrometer  channel B  1.2 ul per min  40x  01,5.95274543762207,3.686523199081421
+./sampled_histograms/200x200 micrometer  channel B  1.2 ul per min  40x  02,6.02202844619751,3.810214042663574
+./sampled_histograms/200x200 micrometer  channel B  1.2 ul per min  40x  03,6.045446395874023,4.109377384185791
+./sampled_histograms/200x200 micrometer  channel B  1.2 ul per min  40x  04,6.272007942199707,4.125359058380127

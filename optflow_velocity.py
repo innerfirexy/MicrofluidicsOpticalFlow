@@ -137,20 +137,31 @@ def unit_test():
 
 def pipeline():
     groups = [
-        ('./Microfluidics Dataset/50 x 50/With Dextran', '50x50',
+        # With dextran
+        # ('./Microfluidics Dataset/50 x 50/With Dextran', '50x50',
+        # 'D', ['0.06', '0.045', '0.075']),
+
+        # ('./Microfluidics Dataset/100 x 100/With Dextran', '100x100',
+        # 'C', ['0.18 ', '0.24', '0.30']),
+
+        # ('./Microfluidics Dataset/200 x 200/With Dextran', '200x200',
+        # 'B', ['0.72 ', '0.96 ', '1.2 ']),
+
+        # ('./Microfluidics Dataset/23.9x83.5/with dextran', '23.9x83.5',
+        # 'dextran', ['v1', 'v2', 'v3']),
+
+        # Without dextran
+        ('./Microfluidics Dataset/50 x 50/Without Dextran', '50x50',
         'D', ['0.06', '0.045', '0.075']),
 
-        ('./Microfluidics Dataset/100 x 100/With Dextran', '100x100',
+        ('./Microfluidics Dataset/100 x 100/Without Dextran', '100x100',
         'C', ['0.18 ', '0.24', '0.30']),
 
-        ('./Microfluidics Dataset/200 x 200/With Dextran', '200x200',
+        ('./Microfluidics Dataset/200 x 200/Without Dextran', '200x200',
         'B', ['0.72 ', '0.96 ', '1.2 ']),
 
-        ('./Microfluidics Dataset/23.9x83.5/with dextran', '23.9x83.5',
-        'dextran', ['v1', 'v2', 'v3']),
-
-        ('./Microfluidics Dataset/23.9x83.5/without dextran', '23.9x83.5',
-        'without dextran', ['v1', 'v2', 'v3']),
+        # ('./Microfluidics Dataset/23.9x83.5/without dextran', '23.9x83.5',
+        # 'without dextran', ['v1', 'v2', 'v3'])
     ]
     result_folder = './sampled_histograms'
 
