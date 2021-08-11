@@ -1,0 +1,25 @@
+name,mean,var
+./sampled_histograms/dextran v1 01,,
+./sampled_histograms/dextran v1 02,,
+./sampled_histograms/dextran v1 03,,
+./sampled_histograms/dextran v1 04,,
+./sampled_histograms/dextran v2 01,5.111816883087158,2.0044596195220947
+./sampled_histograms/dextran v2 02,4.968985557556152,1.8336646556854248
+./sampled_histograms/dextran v2 03,4.953248500823975,1.7828866243362427
+./sampled_histograms/dextran v2 04,4.789037704467773,1.7902458906173706
+./sampled_histograms/dextran v3 01,7.017498970031738,3.9184536933898926
+./sampled_histograms/dextran v3 02,7.329259395599365,4.054284572601318
+./sampled_histograms/dextran v3 03,7.412846088409424,4.318953514099121
+./sampled_histograms/dextran v3 04,7.7843122482299805,4.2429423332214355
+./sampled_histograms/without dextran v1 01,3.7584779262542725,1.443180799484253
+./sampled_histograms/without dextran v1 02,3.535059690475464,1.8375957012176514
+./sampled_histograms/without dextran v1 03,3.989184856414795,1.7105631828308105
+./sampled_histograms/without dextran v1 04,4.183866500854492,2.057223320007324
+./sampled_histograms/without dextran v2 01,5.035033702850342,2.3060033321380615
+./sampled_histograms/without dextran v2 02,5.152563095092773,2.3928825855255127
+./sampled_histograms/without dextran v2 03,5.2470173835754395,2.2056596279144287
+./sampled_histograms/without dextran v2 04,4.805659770965576,1.9931507110595703
+./sampled_histograms/without dextran v3 01,5.043333053588867,2.88611102104187
+./sampled_histograms/without dextran v3 02,6.293174743652344,4.053986549377441
+./sampled_histograms/without dextran v3 03,6.340660572052002,3.7840025424957275
+./sampled_histograms/without dextran v3 04,6.775578022003174,3.9824752807617188

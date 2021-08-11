@@ -100,8 +100,8 @@ def analyze_mags(input_path, plot=False):
     if os.path.exists(mag_filename):
         mags = pickle.load(open(mag_filename, 'rb'))
         mean_mags = np.mean(list(map(
-            lambda x: np.mean(x[np.logical_and(x != np.inf, x > 3.0)]), mags)))
-        print(f'{input_path}, {mean_mags:.3f}')
+            lambda x: np.mean(x[np.logical_and(x != np.inf, x > .5)]), mags)))
+        # print(f'{input_path}, {mean_mags:.3f}')
         if plot:
             plt.hist(mags[0], bins=10)
             plt_name = input_path + '_avgmag.png'
@@ -119,11 +119,11 @@ def analyze_vars(input_path, plot=False):
         mags = pickle.load(open(mag_filename, 'rb'))
         variances = []
         for m in mags:
-            m_valid = m[np.logical_and(m != np.inf, m > 3.0)]
+            m_valid = m[np.logical_and(m != np.inf, m > .5)]
             vari = np.std(m_valid)
             variances.append(vari)
         mean_vars = np.mean(np.array(variances))
-        print(f'{input_path}, {mean_vars:.3f}')
+        # print(f'{input_path}, {mean_vars:.3f}')
     else:
         print(f'{mag_filename} does not exist.')
     
@@ -147,21 +147,21 @@ def pipeline():
         # ('./Microfluidics Dataset/200 x 200/With Dextran', '200x200',
         # 'B', ['0.72 ', '0.96 ', '1.2 ']),
 
-        # ('./Microfluidics Dataset/23.9x83.5/with dextran', '23.9x83.5',
-        # 'dextran', ['v1', 'v2', 'v3']),
+        ('./Microfluidics Dataset/23.9x83.5/with dextran', '23.9x83.5',
+        'dextran', ['v1', 'v2', 'v3']),
 
         # Without dextran
-        ('./Microfluidics Dataset/50 x 50/Without Dextran', '50x50',
-        'D', ['0.06', '0.045', '0.075']),
+        # ('./Microfluidics Dataset/50 x 50/Without Dextran', '50x50',
+        # 'D', ['0.06', '0.045', '0.075']),
 
-        ('./Microfluidics Dataset/100 x 100/Without Dextran', '100x100',
-        'C', ['0.18 ', '0.24', '0.30']),
+        # ('./Microfluidics Dataset/100 x 100/Without Dextran', '100x100',
+        # 'C', ['0.18 ', '0.24', '0.30']),
 
-        ('./Microfluidics Dataset/200 x 200/Without Dextran', '200x200',
-        'B', ['0.72 ', '0.96 ', '1.2 ']),
+        # ('./Microfluidics Dataset/200 x 200/Without Dextran', '200x200',
+        # 'B', ['0.72 ', '0.96 ', '1.2 ']),
 
-        # ('./Microfluidics Dataset/23.9x83.5/without dextran', '23.9x83.5',
-        # 'without dextran', ['v1', 'v2', 'v3'])
+        ('./Microfluidics Dataset/23.9x83.5/without dextran', '23.9x83.5',
+        'without dextran', ['v1', 'v2', 'v3'])
     ]
     result_folder = './sampled_histograms'
 
