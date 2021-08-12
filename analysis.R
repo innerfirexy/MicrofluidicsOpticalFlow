@@ -33,3 +33,16 @@ d2[,.(AvgSDMeanRatio = mean(SDMeanRatio)), by = .(size, speed)]
 # 7:  200 0.720      0.4496567
 # 8:  200 0.960      0.6785399
 # 9:  200 1.200      0.6473749
+
+
+d3 = fread("results_23.9_thres0.5.csv")
+setnames(d3, c("path", "mean", "sd", "condition", "speed"))
+d3$SDMeanRatio = d3$sd / d3$mean
+d3[,.(AvgSDMeanRatio = mean(SDMeanRatio)), by = .(condition, speed)]
+#    condition speed AvgSDMeanRatio
+# 1:      with    v1      0.2379374
+# 2:      with    v2      0.6108653
+# 3:      with    v3      0.8768064
+# 4:   without    v1      0.7273500
+# 5:   without    v2      0.9137718
+# 6:   without    v3      0.7057972

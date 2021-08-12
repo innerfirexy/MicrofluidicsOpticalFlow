@@ -1,24 +1,24 @@
-./sampled_histograms/dextran v1 01,0.8591205477714539,0.2072545737028122
-./sampled_histograms/dextran v1 02,1.3950425386428833,0.36165714263916016
-./sampled_histograms/dextran v1 03,0.902837872505188,0.20452170073986053
-./sampled_histograms/dextran v1 04,0.8068923354148865,0.18133515119552612
-./sampled_histograms/dextran v2 01,3.895537853240967,2.4838786125183105
-./sampled_histograms/dextran v2 02,3.8355302810668945,2.3419086933135986
-./sampled_histograms/dextran v2 03,3.896885395050049,2.2943384647369385
-./sampled_histograms/dextran v2 04,3.709486961364746,2.249783992767334
-./sampled_histograms/dextran v3 01,4.7818427085876465,4.234638214111328
-./sampled_histograms/dextran v3 02,5.148555278778076,4.432135581970215
-./sampled_histograms/dextran v3 03,5.075984477996826,4.600806713104248
-./sampled_histograms/dextran v3 04,5.496531963348389,4.6963582038879395
-./sampled_histograms/without dextran v1 01,2.768017053604126,1.6197375059127808
-./sampled_histograms/without dextran v1 02,1.9974676370620728,1.539747953414917
-./sampled_histograms/without dextran v1 03,2.7148985862731934,1.9311217069625854
-./sampled_histograms/without dextran v1 04,2.371439218521118,1.9969483613967896
-./sampled_histograms/without dextran v2 01,2.9871461391448975,2.605893135070801
-./sampled_histograms/without dextran v2 02,2.8594412803649902,2.6157150268554688
-./sampled_histograms/without dextran v2 03,2.621473789215088,2.3846328258514404
-./sampled_histograms/without dextran v2 04,2.271901845932007,2.177164316177368
-./sampled_histograms/without dextran v3 01,4.217854022979736,2.998462438583374
-./sampled_histograms/without dextran v3 02,5.5235981941223145,4.141821384429932
-./sampled_histograms/without dextran v3 03,5.683495998382568,3.924363374710083
-./sampled_histograms/without dextran v3 04,6.162110328674316,4.1407270431518555
+./sampled_histograms/dextran v1 01,0.8591205477714539,0.2072545737028122,with,v1
+./sampled_histograms/dextran v1 02,1.3950425386428833,0.36165714263916016,with,v1
+./sampled_histograms/dextran v1 03,0.902837872505188,0.20452170073986053,with,v1
+./sampled_histograms/dextran v1 04,0.8068923354148865,0.18133515119552612,with,v1
+./sampled_histograms/dextran v2 01,3.895537853240967,2.4838786125183105,with,v2
+./sampled_histograms/dextran v2 02,3.8355302810668945,2.3419086933135986,with,v2
+./sampled_histograms/dextran v2 03,3.896885395050049,2.2943384647369385,with,v2
+./sampled_histograms/dextran v2 04,3.709486961364746,2.249783992767334,with,v2
+./sampled_histograms/dextran v3 01,4.7818427085876465,4.234638214111328,with,v3
+./sampled_histograms/dextran v3 02,5.148555278778076,4.432135581970215,with,v3
+./sampled_histograms/dextran v3 03,5.075984477996826,4.600806713104248,with,v3
+./sampled_histograms/dextran v3 04,5.496531963348389,4.6963582038879395,with,v3
+./sampled_histograms/without dextran v1 01,2.768017053604126,1.6197375059127808,without,v1
+./sampled_histograms/without dextran v1 02,1.9974676370620728,1.539747953414917,without,v1
+./sampled_histograms/without dextran v1 03,2.7148985862731934,1.9311217069625854,without,v1
+./sampled_histograms/without dextran v1 04,2.371439218521118,1.9969483613967896,without,v1
+./sampled_histograms/without dextran v2 01,2.9871461391448975,2.605893135070801,without,v2
+./sampled_histograms/without dextran v2 02,2.8594412803649902,2.6157150268554688,without,v2
+./sampled_histograms/without dextran v2 03,2.621473789215088,2.3846328258514404,without,v2
+./sampled_histograms/without dextran v2 04,2.271901845932007,2.177164316177368,without,v2
+./sampled_histograms/without dextran v3 01,4.217854022979736,2.998462438583374,without,v3
+./sampled_histograms/without dextran v3 02,5.5235981941223145,4.141821384429932,without,v3
+./sampled_histograms/without dextran v3 03,5.683495998382568,3.924363374710083,without,v3
+./sampled_histograms/without dextran v3 04,6.162110328674316,4.1407270431518555,without,v3
