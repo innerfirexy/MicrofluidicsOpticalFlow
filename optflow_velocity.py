@@ -13,6 +13,7 @@ import pandas as pd
 parser = argparse.ArgumentParser(description='Microfluidics ex-vivo data analysis')
 parser.add_argument('--analyze', type=int, default=1)
 parser.add_argument('--compute', type=int, default=1)
+parser.add_argument('--pix-thres', type=float, default=0.5)
 parser.add_argument('--save', type=str, default='')
 args = parser.parse_args()
 
@@ -94,13 +95,13 @@ def compute_mags(input_video,
         pickle.dump(magnitudes, f)
 
 
-def analyze_mags(input_path, plot=False):
+def analyze_mags(input_path, pix_thres = 0.5, plot=False):
     mag_filename = input_path + '_magnitudes.pkl'
     mean_mags = None
     if os.path.exists(mag_filename):
         mags = pickle.load(open(mag_filename, 'rb'))
         mean_mags = np.mean(list(map(
-            lambda x: np.mean(x[np.logical_and(x != np.inf, x > .5)]), mags)))
+            lambda x: np.mean(x[np.logical_and(x != np.inf, x > pix_thres)]), mags)))
         # print(f'{input_path}, {mean_mags:.3f}')
         if plot:
             plt.hist(mags[0], bins=10)
@@ -112,14 +113,14 @@ def analyze_mags(input_path, plot=False):
     return mean_mags
 
 
-def analyze_vars(input_path, plot=False):
+def analyze_vars(input_path, pix_thres = 0.5, plot=False):
     mag_filename = input_path + '_magnitudes.pkl'
     mean_vars = None
     if os.path.exists(mag_filename):
         mags = pickle.load(open(mag_filename, 'rb'))
         variances = []
         for m in mags:
-            m_valid = m[np.logical_and(m != np.inf, m > .5)]
+            m_valid = m[np.logical_and(m != np.inf, m > pix_thres)]
             vari = np.std(m_valid)
             variances.append(vari)
         mean_vars = np.mean(np.array(variances))
@@ -130,6 +131,21 @@ def analyze_vars(input_path, plot=False):
     return mean_vars
 
 
+def flowrate_experiment(records):
+    results = {}
+    for item in records:
+        flowrate, ve_pixel = item
+        ve_actual = 60 * ve_pixel / 2.1 # 60 is the FPS
+        if flowrate in results:
+            results[flowrate].append(ve_actual)
+        else:
+            results[flowrate] = [ve_actual]
+    # Print results
+    for key, val in results.items():
+        mean = np.mean(val)
+        print(f'{key}: {mean:0.2f}')
+
+
 def unit_test():
     input_path = './sampled_histograms/50x50 micrometer  channel D  0.06ul per min  40x  01'
     analyze_vars(input_path)
@@ -138,8 +154,8 @@ def unit_test():
 def pipeline():
     groups = [
         # With dextran
-        # ('./Microfluidics Dataset/50 x 50/With Dextran', '50x50',
-        # 'D', ['0.06', '0.045', '0.075']),
+        ('./Microfluidics Dataset/50 x 50/With Dextran', '50x50',
+        'D', ['0.06', '0.045', '0.075']),
 
         # ('./Microfluidics Dataset/100 x 100/With Dextran', '100x100',
         # 'C', ['0.18 ', '0.24', '0.30']),
@@ -147,8 +163,8 @@ def pipeline():
         # ('./Microfluidics Dataset/200 x 200/With Dextran', '200x200',
         # 'B', ['0.72 ', '0.96 ', '1.2 ']),
 
-        ('./Microfluidics Dataset/23.9x83.5/with dextran', '23.9x83.5',
-        'dextran', ['v1', 'v2', 'v3']),
+        # ('./Microfluidics Dataset/23.9x83.5/with dextran', '23.9x83.5',
+        # 'dextran', ['v1', 'v2', 'v3']),
 
         # Without dextran
         # ('./Microfluidics Dataset/50 x 50/Without Dextran', '50x50',
@@ -160,12 +176,13 @@ def pipeline():
         # ('./Microfluidics Dataset/200 x 200/Without Dextran', '200x200',
         # 'B', ['0.72 ', '0.96 ', '1.2 ']),
 
-        ('./Microfluidics Dataset/23.9x83.5/without dextran', '23.9x83.5',
-        'without dextran', ['v1', 'v2', 'v3'])
+        # ('./Microfluidics Dataset/23.9x83.5/without dextran', '23.9x83.5',
+        # 'without dextran', ['v1', 'v2', 'v3'])
     ]
     result_folder = './sampled_histograms'
 
     analysis_results = []
+    flowrate_records = []
     for group in groups:
         video_folder, diameter, channel, flow_rates = group
         for rate in flow_rates:
@@ -187,6 +204,8 @@ def pipeline():
                     mean_mags = analyze_mags(input_path)
                     mean_vars = analyze_vars(input_path)
                     analysis_results.append((input_path, mean_mags, mean_vars))
+                    flowrate_records.append((rate, mean_mags))
+    flowrate_experiment(flowrate_records)
     
     if args.save:
         data = pd.DataFrame.from_records(analysis_results, columns=['name', 'mean', 'var'])
