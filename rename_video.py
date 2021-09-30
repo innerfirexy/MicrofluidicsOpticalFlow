@@ -6,8 +6,12 @@ import shutil
 
 
 def handle_dextran(in_str):
-    return re.sub(r'\s+without dextran\s*(?=\d)', '  ', in_str)
+    return re.sub(r'\s+(with|without) dextran\s*(?=\d)', '  ', in_str)
 
+def add_extra_spaces(in_str):
+    out_str = in_str.replace('channel D', ' channel D ')
+    out_str = out_str.replace('40x', ' 40x ')
+    return out_str
 
 def unit_test():
     input1 = '100x100 micrometer  channel C  0.24 ul per min  40x  without dextran01.mp4'
@@ -31,7 +35,10 @@ def main():
     count = 0
     for old in orig_files:
         head, old_tail = os.path.split(old)
-        new_tail = handle_dextran(old_tail)
+
+        new_tail = add_extra_spaces(old_tail)
+        new_tail = handle_dextran(new_tail)
+
         if new_tail != old_tail:
             new = os.path.join(head, new_tail)
             shutil.move(old, new)

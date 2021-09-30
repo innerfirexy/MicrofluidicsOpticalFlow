@@ -135,15 +135,24 @@ def flowrate_experiment(records):
     results = {}
     for item in records:
         flowrate, ve_pixel = item
-        ve_actual = 60 * ve_pixel / 2.1 # 60 is the FPS
+        ve_actual = 60 * ve_pixel / 2.1 # 60 is the FPS; 2.1 is an approximated value, which should be obtained manually
         if flowrate in results:
             results[flowrate].append(ve_actual)
         else:
             results[flowrate] = [ve_actual]
+    # print(results)
     # Print results
-    for key, val in results.items():
+    for key, val in sorted(results.items(), key=lambda x:float(x[0])):
         mean = np.mean(val)
-        print(f'{key}: {mean:0.2f}')
+        print(f'{key}: {mean:.2f}')
+    """
+    =======================
+    # Records 9/29/2021
+    # 50x50, with, pix_thres=3.0
+    # 50x50, without, pix_thres=3.0
+    # 100x100, with, pix_thres=3.0
+    # 100x100, without, pix_thres=3.0
+    """
 
 
 def unit_test():
@@ -154,11 +163,14 @@ def unit_test():
 def pipeline():
     groups = [
         # With dextran
-        ('./Microfluidics Dataset/50 x 50/With Dextran', '50x50',
+        # ('./Microfluidics Dataset/50 x 50/With Dextran', '50x50',
+        # 'D', ['0.06', '0.045', '0.075']),
+
+        ('./Microfluidics Dataset/50x50 second version 5.24.2021/With Dextran', '50x50',
         'D', ['0.06', '0.045', '0.075']),
 
-        # ('./Microfluidics Dataset/100 x 100/With Dextran', '100x100',
-        # 'C', ['0.18 ', '0.24', '0.30']),
+        ('./Microfluidics Dataset/100 x 100/With Dextran', '100x100',
+        'C', ['0.18 ', '0.24', '0.30']),
 
         # ('./Microfluidics Dataset/200 x 200/With Dextran', '200x200',
         # 'B', ['0.72 ', '0.96 ', '1.2 ']),
@@ -170,8 +182,11 @@ def pipeline():
         # ('./Microfluidics Dataset/50 x 50/Without Dextran', '50x50',
         # 'D', ['0.06', '0.045', '0.075']),
 
-        # ('./Microfluidics Dataset/100 x 100/Without Dextran', '100x100',
-        # 'C', ['0.18 ', '0.24', '0.30']),
+        ('./Microfluidics Dataset/50x50 second version 5.24.2021/Without Dextran', '50x50',
+        'D', ['0.06', '0.045', '0.075']),
+
+        ('./Microfluidics Dataset/100 x 100/Without Dextran', '100x100',
+        'C', ['0.18 ', '0.24', '0.30']),
 
         # ('./Microfluidics Dataset/200 x 200/Without Dextran', '200x200',
         # 'B', ['0.72 ', '0.96 ', '1.2 ']),
@@ -179,12 +194,19 @@ def pipeline():
         # ('./Microfluidics Dataset/23.9x83.5/without dextran', '23.9x83.5',
         # 'without dextran', ['v1', 'v2', 'v3'])
     ]
-    result_folder = './sampled_histograms'
+    root_results_folder = './results'
 
     analysis_results = []
     flowrate_records = []
     for group in groups:
         video_folder, diameter, channel, flow_rates = group
+
+        head, tail1 = os.path.split(video_folder) # E.g., tail1 = With Dextran
+        _, tail2 = os.path.split(head) # E.g., tail2 = 50 x 50
+        result_folder = os.path.join(root_results_folder, tail2, tail1)
+        if not os.path.exists(result_folder):
+            os.makedirs(result_folder)
+
         for rate in flow_rates:
             trials = ['01', '02', '03', '04']
             for t in trials:
@@ -201,14 +223,16 @@ def pipeline():
                     print()
                 if args.analyze == 1:
                     input_path = os.path.join(result_folder, input_name)
-                    mean_mags = analyze_mags(input_path)
-                    mean_vars = analyze_vars(input_path)
-                    analysis_results.append((input_path, mean_mags, mean_vars))
-                    flowrate_records.append((rate, mean_mags))
-    flowrate_experiment(flowrate_records)
+                    mean_mags = analyze_mags(input_path, pix_thres=args.pix_thres)
+                    mean_vars = analyze_vars(input_path, pix_thres=args.pix_thres)
+                    analysis_results.append((diameter, tail1, rate, mean_mags, mean_vars))
+                    # flowrate_records.append((rate, mean_mags))
+    
+    if len(flowrate_records) > 0:
+        flowrate_experiment(flowrate_records)
     
     if args.save:
-        data = pd.DataFrame.from_records(analysis_results, columns=['name', 'mean', 'var'])
+        data = pd.DataFrame.from_records(analysis_results, columns=['Diameter', 'Dextran', 'FlowRate', 'VelocityPixel', 'SDPixel'])
         data.to_csv(args.save, index=False)
 
 

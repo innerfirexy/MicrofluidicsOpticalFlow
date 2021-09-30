@@ -1,5 +1,6 @@
 Microfluidics Dataset/
 sampled_histograms/
+results/
 *.mp4
 *.cine
 
